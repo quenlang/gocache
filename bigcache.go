@@ -12,11 +12,11 @@ type bigCache struct {
 
 func newBigCache(config *cacheConfig) (*bigCache, error) {
 	cache, err := bigcache.NewBigCache(bigcache.Config{
-		Shards:             16,
+		Shards:             1024,
 		LifeWindow:         config.ttl,
 		CleanWindow:        config.cleanFreq,
 		MaxEntriesInWindow: 1000 * 10 * 60,
-		MaxEntrySize:       512,
+		MaxEntrySize:       256,
 		Verbose:            false,
 		HardMaxCacheSize:   config.size,
 		StatsEnabled:       true,
