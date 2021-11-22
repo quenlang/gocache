@@ -46,8 +46,8 @@ type Cache interface {
 
 func New(options ...Option) (Cache, error) {
 	config := &cacheConfig{
-		size:      1024,
-		ttl:       24 * time.Hour,
+		size:      512,
+		ttl:       1 * time.Hour,
 		cleanFreq: 5 * time.Minute,
 	}
 	for _, option := range options {
