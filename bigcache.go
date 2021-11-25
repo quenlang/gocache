@@ -16,7 +16,7 @@ func newBigCache(config *cacheConfig) (*bigCache, error) {
 		LifeWindow:         config.ttl,
 		CleanWindow:        config.cleanFreq,
 		MaxEntriesInWindow: 1000 * 10 * 60,
-		MaxEntrySize:       256,
+		MaxEntrySize:       128,
 		Verbose:            false,
 		HardMaxCacheSize:   config.size,
 		StatsEnabled:       true,
@@ -44,6 +44,14 @@ func (c *bigCache) Get(key string) (interface{}, error) {
 
 func (c *bigCache) Delete(key string) error {
 	return c.cache.Delete(key)
+}
+
+func (c *bigCache) Capacity() int {
+	return c.cache.Capacity()
+}
+
+func (c *bigCache) Len() int {
+	return c.cache.Len()
 }
 
 func serializeGOB(value interface{}) ([]byte, error) {

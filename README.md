@@ -1,5 +1,7 @@
 ##### introduction
+gocache is a wraper of bigcache.
 
 ##### usage
-
-# gocache
+```
+go get github.com/quenlang/gocache
+```
