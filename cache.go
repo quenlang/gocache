@@ -44,6 +44,7 @@ type Cache interface {
 	Delete(key string) error
 	Capacity() int
 	Len() int
+	Exist(key string) bool
 }
 
 func New(options ...Option) (Cache, error) {

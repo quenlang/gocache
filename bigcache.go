@@ -54,6 +54,11 @@ func (c *bigCache) Len() int {
 	return c.cache.Len()
 }
 
+func (c *bigCache) Exist(key string) bool {
+	v, err := c.cache.Get(key)
+	return err == nil && v != nil
+}
+
 func serializeGOB(value interface{}) ([]byte, error) {
 	buf := bytes.Buffer{}
 	enc := gob.NewEncoder(&buf)
